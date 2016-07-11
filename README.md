@@ -4,7 +4,7 @@
 ```
 $ virtualenv .pyenv
 $ source .pyenv/bin/activate
-$ pip install -r requirements.txt
+$ pip install -r requirements/base.txt
 ```
 
 #### Run
