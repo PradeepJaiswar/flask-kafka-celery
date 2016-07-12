@@ -1,4 +1,4 @@
-### Tutorial for setting up a basic Flask REST API only application
+### Tutorial for setting up a basic Flask REST APIs only application
 
 #### Install dependencies
 ```
