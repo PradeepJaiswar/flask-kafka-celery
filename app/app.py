@@ -1,7 +1,7 @@
 import os
 from flask import Flask
 
-from config.dev import DevConfig
+from config.base import BaseConfig
 from .constants import constants as COMMON_CONSTANTS
 from .api import users
 
@@ -16,7 +16,7 @@ def create_app(config=None, app_name=None, blueprints=None):
    """Create a Flask app."""
 
    if app_name is None:
-     app_name = DevConfig.PROJECT
+     app_name = BaseConfig.PROJECT
    if blueprints is None:
      blueprints = DEFAULT_BLUEPRINTS
 
@@ -34,10 +34,10 @@ def configure_app(app, config=None):
    """Different ways of configurations."""
 
    # http://flask.pocoo.org/docs/api/#configuration
-   app.config.from_object(DevConfig)
+   app.config.from_object(BaseConfig)
 
    if config:
-     app.config.from_object(config)
+     app.config.from_object(config) 
      return
 
    # get mode from os environment #TODO what this 2 below line do
