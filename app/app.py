@@ -1,7 +1,7 @@
 import os
 from flask import Flask
 
-from .config import config as Config
+from config.dev import DevConfig
 from .constants import constants as COMMON_CONSTANTS
 from .api import users
 
@@ -16,9 +16,10 @@ def create_app(config=None, app_name=None, blueprints=None):
    """Create a Flask app."""
 
    if app_name is None:
-     app_name = Config.DefaultConfig.PROJECT
+     app_name = DevConfig.PROJECT
    if blueprints is None:
      blueprints = DEFAULT_BLUEPRINTS
+
 
    app = Flask(app_name, instance_path=COMMON_CONSTANTS.INSTANCE_FOLDER_PATH, instance_relative_config=True)
    configure_app(app, config)
@@ -33,15 +34,15 @@ def configure_app(app, config=None):
    """Different ways of configurations."""
 
    # http://flask.pocoo.org/docs/api/#configuration
-   app.config.from_object(Config.DefaultConfig)
+   app.config.from_object(DevConfig)
 
    if config:
      app.config.from_object(config)
      return
 
-   # get mode from os environment
-   application_mode = os.getenv('APPLICATION_MODE', 'LOCAL')
-   app.config.from_object(Config.get_config(application_mode))
+   # get mode from os environment #TODO what this 2 below line do
+   #application_mode = os.getenv('APPLICATION_MODE', 'LOCAL')
+   #app.config.from_object(Config.get_config(application_mode))
 
 def configure_extensions(app):
    pass
