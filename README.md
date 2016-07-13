@@ -15,4 +15,5 @@ $ python run.py
 * Restarting with stat
 ```
 
-Now hit `http://localhost:5000/api/users/` in your browser
+Now hit `http://localhost:5000/api/users` in your browser
+Now hit `http://localhost:5000/api/customers` in your browser

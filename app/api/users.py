@@ -1,19 +1,13 @@
-"""
- Simple API endpoint for returning users
-"""
-from flask import (Blueprint, render_template, current_app, request,
-                   flash, url_for, redirect, session, abort, jsonify, make_response)
+from flask_restful import Resource
+from app.api import api
 
+class UsersResource(Resource):
+    def get(self):
+        users = {
+           '1' : "User 1",
+           '2' : "User 2",
+           '3' : "User 3",
+        }
+        return users,200
 
-users = Blueprint('users', __name__, url_prefix='/api/users')
-
-
-@users.route('/', methods=['GET'])
-def index():
-
-   data = {
-      'a' : "A",
-      'b' : "B",
-      'c' : "C",
-   }
-   return make_response(jsonify(data))
+api.add_resource(UsersResource, '/users')

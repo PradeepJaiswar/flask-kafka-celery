@@ -3,28 +3,21 @@ from flask import Flask
 
 from config.base import BaseConfig
 from .constants import constants as COMMON_CONSTANTS
-from .api import users
+from api import api_blueprint
 
 # For import *
 __all__ = ['create_app']
-
-DEFAULT_BLUEPRINTS = [
-   users
-]
 
 def create_app(config=None, app_name=None, blueprints=None):
    """Create a Flask app."""
 
    if app_name is None:
      app_name = BaseConfig.PROJECT
-   if blueprints is None:
-     blueprints = DEFAULT_BLUEPRINTS
-
 
    app = Flask(app_name, instance_path=COMMON_CONSTANTS.INSTANCE_FOLDER_PATH, instance_relative_config=True)
    configure_app(app, config)
    configure_hook(app)
-   configure_blueprints(app, blueprints)
+   register_blueprints(app)
    configure_extensions(app)
    configure_logging(app)
    configure_error_handlers(app)
@@ -37,7 +30,7 @@ def configure_app(app, config=None):
    app.config.from_object(BaseConfig)
 
    if config:
-     app.config.from_object(config) 
+     app.config.from_object(config)
      return
 
    # get mode from os environment #TODO what this 2 below line do
@@ -47,9 +40,8 @@ def configure_app(app, config=None):
 def configure_extensions(app):
    pass
 
-def configure_blueprints(app, blueprints):
-   for blueprint in blueprints:
-      app.register_blueprint(blueprint)
+def register_blueprints(app):
+    app.register_blueprint(api_blueprint)
 
 def configure_logging(app):
     pass
