@@ -5,6 +5,8 @@ from config.base import BaseConfig
 from .constants import constants as COMMON_CONSTANTS
 from api import api_blueprint
 
+from flask_cors import CORS
+
 # For import *
 __all__ = ['create_app']
 
@@ -21,6 +23,7 @@ def create_app(config=None, app_name=None, blueprints=None):
    configure_extensions(app)
    configure_logging(app)
    configure_error_handlers(app)
+   enable_cors(app)
    return app
 
 def configure_app(app, config=None):
@@ -44,6 +47,10 @@ def register_blueprints(app):
     app.register_blueprint(api_blueprint)
 
 def configure_logging(app):
+    pass
+
+def enable_cors(app):
+    CORS(app)
     pass
 
 def configure_hook(app):
