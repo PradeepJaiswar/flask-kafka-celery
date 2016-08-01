@@ -1,6 +1,7 @@
-Flask==0.10.1
-Jinja2==2.8
-MarkupSafe==0.23
-Werkzeug==0.10.4
-itsdangerous==0.24
-wsgiref==0.1.2
+flask_restful
+Flask==0.11.1
+Werkzeug
+wsgiref
+flask_restful_swagger
+redis
+flask_cors
