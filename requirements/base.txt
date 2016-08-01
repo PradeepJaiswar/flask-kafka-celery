@@ -1,5 +1,5 @@
-flask_restful
 Flask==0.11.1
+flask_restful
 Werkzeug
 wsgiref
 flask_restful_swagger
