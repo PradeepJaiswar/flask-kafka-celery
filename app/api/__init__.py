@@ -27,3 +27,4 @@ api = swagger.docs(Api(api_blueprint), apiVersion='0.1',
 # initialized
 from . import users  # NOQA
 from . import customers  # NOQA
+from . import urls  # NOQA
