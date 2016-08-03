@@ -5,3 +5,4 @@ wsgiref
 flask_restful_swagger
 redis
 flask_cors
+Celery
