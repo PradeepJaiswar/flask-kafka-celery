@@ -1,6 +1,6 @@
 from celery import Celery
 
-app = Celery('worker1', broker='redis://localhost:6379/0')
+app = Celery('worker1', broker='amqp://guest@localhost//')
 
 @app.task(name='flask-rest-api.tasks.printNumbers')
 def printNumbers():
